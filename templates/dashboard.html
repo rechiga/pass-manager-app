@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ダッシュボード</title>
+
+    <!-- 共通CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="page-container">
+        <div class="dashboard-card">
+            <div class="top-bar">
+                <h1 class="page-title" style="margin: 0;">ダッシュボード</h1>
+                <a href="/logout" class="button button-secondary">ログアウト</a>
+            </div>
+
+            <!-- flashメッセージ表示 -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="flash-message">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <p class="user-badge">{{ session["username"] }} さん、ログイン中です。</p>
+
+            <div class="button-row">
+                <a href="/add_password" class="button button-primary">新しいパスワード情報を追加する</a>
+            </div>
+
+            <h2 class="section-title">保存したパスワード一覧</h2>
+
+            {% if password_list %}
+                <div class="table-wrapper">
+                    <table class="password-table">
+                        <tr>
+                            <th>サービス名</th>
+                            <th>ログインID</th>
+                            <th>パスワード</th>
+                            <th>メモ</th>
+                            <th>操作</th>
+                        </tr>
+
+                        {% for data in password_list %}
+                        <tr>
+                            <td>{{ data[2] }}</td>
+                            <td>{{ data[3] }}</td>
+                            <td>{{ data[4] }}</td>
+                            <td>{{ data[5] }}</td>
+                            <td class="action-cell">
+                                <!-- 編集は画面を開くだけなので GET -->
+                                <form method="GET" action="/edit_password/{{ data[0] }}" class="inline-form">
+                                    <button type="submit" class="button button-primary">編集</button>
+                                </form>
+
+                                <!-- 削除はデータ変更なので POST -->
+                                <form method="POST" action="/delete_password/{{ data[0] }}" class="inline-form">
+                                    <button type="submit" class="button button-danger">削除</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% else %}
+                <p class="description-text">まだ登録されたパスワード情報はありません。</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

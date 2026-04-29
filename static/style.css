@@ -1,0 +1,263 @@
+/* =========================
+   画面全体の基本設定
+========================= */
+body {
+    margin: 0; /* ブラウザ標準の余白を消す */
+    padding: 0;
+    font-family: "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif; /* 読みやすいフォント */
+    background-color: #f4f7fb; /* 薄い青みグレー */
+    color: #1f2937; /* 濃いグレー文字 */
+}
+
+/* =========================
+   共通レイアウト
+========================= */
+.page-container {
+    max-width: 1100px; /* 横幅を広げすぎない */
+    margin: 40px auto; /* 上下40px、左右中央 */
+    padding: 0 20px; /* スマホでも端に寄りすぎない */
+}
+
+/* ログイン・登録・追加・編集で使う白いカード */
+.card {
+    max-width: 520px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 16px; /* 角を少し丸くする */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* ふわっと浮かせる */
+    padding: 32px;
+}
+
+/* dashboard 用の少し大きいカード */
+.dashboard-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    padding: 32px;
+}
+
+/* =========================
+   見出し
+========================= */
+.app-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #1d4ed8; /* 青 */
+    margin-bottom: 8px;
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+
+.sub-title {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 24px;
+    color: #374151;
+}
+
+/* =========================
+   フォーム
+========================= */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #374151;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    box-sizing: border-box; /* paddingを入れても幅が崩れない */
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: #f9fafb;
+    transition: border-color 0.2s ease;
+}
+
+/* 入力欄を選択したとき */
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    background-color: #ffffff;
+}
+
+.form-textarea {
+    min-height: 100px;
+    resize: vertical; /* 縦方向だけサイズ変更可能 */
+}
+
+/* =========================
+   ボタン
+========================= */
+.button {
+    display: inline-block;
+    padding: 11px 18px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+
+/* メインの青ボタン */
+.button-primary {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* 赤系の削除ボタン */
+.button-danger {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+/* 薄いグレーの補助ボタン */
+.button-secondary {
+    background-color: #e5e7eb;
+    color: #111827;
+}
+
+/* ボタンを横並びにするとき用 */
+.button-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+/* 幅いっぱいのボタン */
+.button-full {
+    width: 100%;
+}
+
+/* =========================
+   リンク
+========================= */
+.text-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+.center-text {
+    text-align: center;
+}
+
+/* =========================
+   flashメッセージ
+========================= */
+.flash-message {
+    background-color: #eff6ff; /* 薄い青 */
+    border: 1px solid #bfdbfe;
+    color: #1d4ed8;
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* エラーっぽく見せたいときにも使える赤系 */
+.flash-message-error {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   dashboard の上部
+========================= */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.user-badge {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-weight: bold;
+}
+
+/* =========================
+   テーブル
+========================= */
+.table-wrapper {
+    overflow-x: auto; /* 画面が狭い時に横スクロールできる */
+    margin-top: 20px;
+}
+
+.password-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+.password-table th,
+.password-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.password-table th {
+    background-color: #f9fafb;
+    font-weight: bold;
+    color: #374151;
+}
+
+/* 操作ボタン部分を縦に並べず横に寄せやすくする */
+.action-cell {
+    min-width: 140px;
+}
+
+.inline-form {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+/* =========================
+   セクション余白
+========================= */
+.section-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 12px;
+}
+
+.description-text {
+    color: #6b7280;
+    margin-bottom: 20px;
+}
